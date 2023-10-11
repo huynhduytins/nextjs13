@@ -10,21 +10,32 @@ interface ThemeContextType {
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined)
 
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
-  const [mode, setMode] = useState('light')
+  const [mode, setMode] = useState('')
+
+  const changeTheme = (theme: string) => {
+    document.documentElement.className = theme
+  }
 
   const handleChangeTheme = () => {
-    if (mode === 'dark') {
-      document.documentElement.classList.remove('light')
-      document.documentElement.classList.add('dark')
+    const systemTheme = window.matchMedia('(prefers-color-scheme: dark)')
+      .matches
+      ? 'dark'
+      : 'light'
+
+    if (mode === 'system' || mode === '') {
+      changeTheme(systemTheme)
     } else {
-      document.documentElement.classList.remove('dark')
-      document.documentElement.classList.add('light')
+      changeTheme(mode)
     }
   }
 
   useEffect(() => {
     handleChangeTheme()
   }, [mode])
+
+  useEffect(() => {
+    setMode(localStorage.getItem('theme') || '')
+  }, [])
 
   return (
     <ThemeContext.Provider value={{ mode, setMode }}>

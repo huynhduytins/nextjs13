@@ -8,8 +8,6 @@ import {
   MenubarContent,
   MenubarItem,
   MenubarMenu,
-  MenubarSeparator,
-  MenubarShortcut,
   MenubarTrigger,
 } from '@/components/ui/menubar'
 import Image from 'next/image'
@@ -17,8 +15,6 @@ import { themes } from '@/constants'
 
 const Theme = () => {
   const { mode, setMode } = useTheme()
-
-  console.log('mode', mode)
 
   return (
     <Menubar className="relative border-none bg-transparent shadow-none">
@@ -36,7 +32,14 @@ const Theme = () => {
         </MenubarTrigger>
         <MenubarContent className="absolute right-[-3rem] mt-3 min-w-[120px] rounded border py-2 dark:border-dark-400 dark:bg-dark-300">
           {themes.map((theme) => (
-            <MenubarItem key={theme.value} onClick={() => setMode(theme.value)}>
+            <MenubarItem
+              key={theme.value}
+              onClick={() => {
+                setMode(theme.value)
+                localStorage.setItem('theme', theme.value)
+              }}
+              className="flex items-center gap-4 px-2.5 dark:focus:bg-dark-400"
+            >
               <Image
                 src={theme.icon}
                 alt={theme.value}
