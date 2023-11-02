@@ -13,7 +13,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
         </section>
         Right Sidebar
       </div>
-      Toaster
+      {/* Toaster */}
     </main>
   )
 }
