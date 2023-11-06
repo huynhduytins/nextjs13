@@ -71,3 +71,51 @@ export const BADGE_CRITERIA = {
     GOLD: 100000,
   },
 }
+
+export const HOT_NETWORKS = [
+  {
+    description:
+      'Would it be appropriate to point out an error in another paper during a referee report?',
+    link: '/questions/1',
+  },
+  {
+    description: 'How can an airconditioning machine exist?',
+    link: '/questions/2',
+  },
+  {
+    description: 'Interrogated every time crossing UK Border as citizen',
+    link: '/questions/3',
+  },
+  {
+    description: 'Low digit addition generator',
+    link: '/questions/4',
+  },
+  {
+    description:
+      'What is an example of 3 numbers that do not make up a vector?',
+    link: '/questions/5',
+  },
+]
+
+export const HOT_TAGS = [
+  {
+    tag: 'nextJS',
+    views: '15',
+    link: '/tags/nextJS',
+  },
+  {
+    tag: 'test',
+    views: '12',
+    link: '/tags/test',
+  },
+  {
+    tag: 'react',
+    views: '7',
+    link: '/tags/react',
+  },
+  {
+    tag: 'css',
+    views: '6',
+    link: '/tags/css',
+  },
+]
