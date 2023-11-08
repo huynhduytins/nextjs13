@@ -4,9 +4,11 @@ import RightBarLink from './RightBarLink'
 
 const RightSideBar = () => {
   return (
-    <section className="custom-scrollbar background-light900_dark200 light-border sticky left-0 top-0 flex h-screen w-fit flex-col overflow-y-auto border-r p-6 pt-36 leading-4 shadow-light-300 dark:shadow-none max-lg:hidden lg:w-[300px]">
+    <section className="custom-scrollbar background-light900_dark200 light-border sticky right-0 top-0 flex h-screen w-fit flex-col overflow-y-auto border-r p-6 pt-36 leading-4 shadow-light-300 dark:shadow-none max-xl:hidden lg:w-[300px]">
       <div>
-        <h2 className="mb-[26px] text-xl font-bold">Top Question</h2>
+        <h2 className="mb-[26px] text-xl font-bold dark:text-light-900">
+          Top Question
+        </h2>
         <ul className="flex flex-col gap-[30px]">
           {HOT_NETWORKS.map((network) => (
             <li key={network.link}>
@@ -19,7 +21,9 @@ const RightSideBar = () => {
         </ul>
       </div>
       <div className="mt-14">
-        <h2 className="mb-[26px] text-xl font-bold">Popular Tags</h2>
+        <h2 className="mb-[26px] text-xl font-bold dark:text-light-900">
+          Popular Tags
+        </h2>
         <ul className="flex flex-col gap-[30px]">
           {HOT_TAGS.map((tag) => (
             <li key={tag.tag}>

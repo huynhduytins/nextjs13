@@ -1,8 +1,7 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import React from 'react'
-import { Button } from '@/components/ui/button'
-import link from 'next/link'
+import Tag from '../Tag'
 
 interface IRightBarLink {
   description: string
@@ -15,14 +14,14 @@ const RightBarLink = ({ description, link, views }: IRightBarLink) => {
     <>
       {views ? (
         <Link href={link} className="flex items-center justify-between">
-          <Button className="rounded-[6px] bg-light-800 px-4 py-2 text-[10px] font-medium uppercase">
-            {description}
-          </Button>
-          <p className="text-sm font-medium">{views}</p>
+          <Tag>{description}</Tag>
+          <p className="text-sm font-medium dark:text-light-700">{views}</p>
         </Link>
       ) : (
         <Link href={link} className="flex items-start justify-between">
-          <p className="max-w-[248px] text-sm font-medium">{description}</p>
+          <p className="max-w-[248px] text-sm font-medium dark:text-light-700">
+            {description}
+          </p>
           <Image
             src="assets/icons/chevron-right.svg"
             alt="arrow"

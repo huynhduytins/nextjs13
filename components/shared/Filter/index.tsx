@@ -1,42 +1,27 @@
 'use client'
 
-import { useTheme } from '@/context/ThemeProvider'
-
+import { themes } from '@/constants'
 import {
   Menubar,
   MenubarContent,
   MenubarItem,
   MenubarMenu,
   MenubarTrigger,
-} from '@/components/ui/menubar'
+} from '@radix-ui/react-menubar'
 import Image from 'next/image'
-import { themes } from '@/constants'
+import React from 'react'
 
-const Theme = () => {
-  const { mode, setMode } = useTheme()
-
+const Filter = () => {
   return (
     <Menubar className="relative border-none bg-transparent shadow-none">
       <MenubarMenu>
         <MenubarTrigger className="focus:bg-light-900 data-[state=open]:bg-light-900 dark:focus:bg-dark-200 dark:data-[state=open]:bg-dark-200">
-          <Image
-            src={`/assets/icons/${
-              mode === 'light' ? 'sun' : mode === 'dark' ? 'moon' : 'computer'
-            }.svg`}
-            alt="sun"
-            width={20}
-            height={29}
-            className="active-theme"
-          />
+          ss
         </MenubarTrigger>
         <MenubarContent className="absolute right-[-3rem] mt-3 min-w-[120px] rounded border bg-light-900 py-2 dark:border-dark-400 dark:bg-dark-300">
           {themes.map((theme) => (
             <MenubarItem
               key={theme.value}
-              onClick={() => {
-                setMode(theme.value)
-                localStorage.setItem('theme', theme.value)
-              }}
               className="flex items-center gap-4 px-2.5 dark:focus:bg-dark-400"
             >
               <Image
@@ -44,17 +29,7 @@ const Theme = () => {
                 alt={theme.value}
                 height={16}
                 width={16}
-                className={`${mode === theme.value && 'active-theme'}`}
               />
-              <p
-                className={`body-semibold text-light-500 ${
-                  mode === theme.value
-                    ? 'text-primary-500'
-                    : 'text-dark100_light900'
-                }`}
-              >
-                {theme.label}
-              </p>
             </MenubarItem>
           ))}
         </MenubarContent>
@@ -63,4 +38,4 @@ const Theme = () => {
   )
 }
 
-export default Theme
+export default Filter

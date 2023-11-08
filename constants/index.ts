@@ -119,3 +119,13 @@ export const HOT_TAGS = [
     link: '/tags/css',
   },
 ]
+
+export const FILTERS = [
+  {
+    title: 'Newest',
+    value: 'newest',
+  },
+  { title: 'Recommended', value: 'recommended' },
+  { title: 'Frequent', value: 'frequent' },
+  { title: 'Unanswered', value: 'unanswered' },
+]
