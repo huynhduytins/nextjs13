@@ -1,40 +1,42 @@
 'use client'
 
-import { themes } from '@/constants'
 import {
-  Menubar,
-  MenubarContent,
-  MenubarItem,
-  MenubarMenu,
-  MenubarTrigger,
-} from '@radix-ui/react-menubar'
-import Image from 'next/image'
-import React from 'react'
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+  SelectGroup,
+} from '@/components/ui/select'
 
-const Filter = () => {
+interface FilterProps {
+  filters: { value: string; name: string }[]
+  otherClass?: string
+  containerClasses?: string
+}
+
+const Filter = ({ filters, containerClasses, otherClass }: FilterProps) => {
   return (
-    <Menubar className="relative border-none bg-transparent shadow-none">
-      <MenubarMenu>
-        <MenubarTrigger className="focus:bg-light-900 data-[state=open]:bg-light-900 dark:focus:bg-dark-200 dark:data-[state=open]:bg-dark-200">
-          ss
-        </MenubarTrigger>
-        <MenubarContent className="absolute right-[-3rem] mt-3 min-w-[120px] rounded border bg-light-900 py-2 dark:border-dark-400 dark:bg-dark-300">
-          {themes.map((theme) => (
-            <MenubarItem
-              key={theme.value}
-              className="flex items-center gap-4 px-2.5 dark:focus:bg-dark-400"
-            >
-              <Image
-                src={theme.icon}
-                alt={theme.value}
-                height={16}
-                width={16}
-              />
-            </MenubarItem>
-          ))}
-        </MenubarContent>
-      </MenubarMenu>
-    </Menubar>
+    <div className={`relative ${containerClasses}`}>
+      <Select>
+        <SelectTrigger
+          className={`${otherClass} body-regular light-border background-light800_dark300 text-dark500_light700 border px-5 py-2.5`}
+        >
+          <div className="line-clamp-1 flex-1 text-left">
+            <SelectValue placeholder={filters[0].name} />
+          </div>
+        </SelectTrigger>
+        <SelectContent>
+          <SelectGroup>
+            {filters.map((filter) => (
+              <SelectItem key={filter.value} value={filter.value} className="">
+                {filter.name}
+              </SelectItem>
+            ))}
+          </SelectGroup>
+        </SelectContent>
+      </Select>
+    </div>
   )
 }
 

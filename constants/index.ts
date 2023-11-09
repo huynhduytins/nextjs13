@@ -120,12 +120,12 @@ export const HOT_TAGS = [
   },
 ]
 
-export const FILTERS = [
+export const HomePageFilters = [
   {
-    title: 'Newest',
+    name: 'Newest',
     value: 'newest',
   },
-  { title: 'Recommended', value: 'recommended' },
-  { title: 'Frequent', value: 'frequent' },
-  { title: 'Unanswered', value: 'unanswered' },
+  { name: 'Recommended', value: 'recommended' },
+  { name: 'Frequent', value: 'frequent' },
+  { name: 'Unanswered', value: 'unanswered' },
 ]
