@@ -4,7 +4,7 @@ import RightBarLink from './RightBarLink'
 
 const RightSideBar = () => {
   return (
-    <section className="custom-scrollbar background-light900_dark200 light-border sticky right-0 top-0 flex h-screen w-fit flex-col overflow-y-auto border-r p-6 pt-36 leading-4 shadow-light-300 dark:shadow-none max-xl:hidden lg:w-[300px]">
+    <section className="custom-scrollbar background-light900_dark200 light-border sticky right-0 top-0 flex h-screen w-fit flex-col overflow-y-auto border-r p-6 pt-36 leading-4 shadow-light-300 dark:shadow-none max-xl:hidden lg:w-[330px]">
       <div>
         <h2 className="mb-[26px] text-xl font-bold dark:text-light-900">
           Top Question

@@ -1,5 +1,6 @@
 import Filter from '@/components/shared/Filter'
 import HomeFilter from '@/components/shared/Filter/HomeFilter'
+import QuestionCard from '@/components/shared/QuestionCard'
 import LocalSearch from '@/components/shared/Search/LocalSearch'
 import { Button } from '@/components/ui/button'
 import { HomePageFilters } from '@/constants'
@@ -16,7 +17,7 @@ export default function Home() {
           </Button>
         </Link>
       </div>
-      <div className="mt-11 flex justify-between gap-5 max-sm:flex-col sm:items-center lg:flex-col lg:items-start lg:gap-0">
+      <div className="mt-11 flex justify-between gap-5 max-sm:flex-col sm:items-center md:flex-col md:items-start md:gap-0">
         <LocalSearch
           route=""
           iconPosition="left"
@@ -30,6 +31,17 @@ export default function Home() {
           otherClass="min-h-[56px] sm:min-w-[170px]"
         />
         <HomeFilter filters={HomePageFilters} />
+      </div>
+      <div className="mt-10 flex flex-col gap-6">
+        <QuestionCard />
+        <QuestionCard />
+        <QuestionCard />
+        <QuestionCard />
+        <QuestionCard />
+        <QuestionCard />
+        <QuestionCard />
+        <QuestionCard />
+        <QuestionCard />
       </div>
     </>
   )
