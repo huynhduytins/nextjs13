@@ -3,13 +3,13 @@ import Image from 'next/image'
 import React from 'react'
 import Tag from '../Tag'
 
-interface IRightBarLink {
+interface RightBarLinkProps {
   description: string
   link: string
   views?: string
 }
 
-const RightBarLink = ({ description, link, views }: IRightBarLink) => {
+const RightBarLink = ({ description, link, views }: RightBarLinkProps) => {
   return (
     <>
       {views ? (

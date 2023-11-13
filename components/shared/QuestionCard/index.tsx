@@ -4,7 +4,31 @@ import Image from 'next/image'
 
 const tags = ['javascript', 'html', 'css', 'reactjs']
 
-const QuestionCard = () => {
+export interface QuestionCardProps {
+  _id: string
+  title: string
+  tags: { _id: string; name: string }[]
+  author: {
+    _id: string
+    name: string
+    avatar: string
+  }
+  upVotes: number
+  views: number
+  answers: Array<object>
+  createdAt: Date
+}
+
+const QuestionCard = ({
+  _id,
+  title,
+  tags,
+  author,
+  upVotes,
+  views,
+  answers,
+  createdAt,
+}) => {
   return (
     <div className="flex min-h-[209px] flex-col gap-7 rounded-[10px] border px-[45px] py-[36px] shadow-light-300">
       <div>

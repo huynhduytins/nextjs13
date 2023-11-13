@@ -1,5 +1,6 @@
 import Filter from '@/components/shared/Filter'
 import HomeFilter from '@/components/shared/Filter/HomeFilter'
+import NoResult from '@/components/shared/NoResult'
 import QuestionCard from '@/components/shared/QuestionCard'
 import LocalSearch from '@/components/shared/Search/LocalSearch'
 import { Button } from '@/components/ui/button'
@@ -33,6 +34,7 @@ export default function Home() {
         <HomeFilter filters={HomePageFilters} />
       </div>
       <div className="mt-10 flex flex-col gap-6">
+        {/* <QuestionCard />
         <QuestionCard />
         <QuestionCard />
         <QuestionCard />
@@ -40,8 +42,15 @@ export default function Home() {
         <QuestionCard />
         <QuestionCard />
         <QuestionCard />
-        <QuestionCard />
-        <QuestionCard />
+        <QuestionCard /> */}
+        <NoResult
+          title="There's no question to show"
+          description="Be the first to break the silence! 🚀 Ask a Question and kickstart the
+        discussion. our query could be the next big thing others learn from. Get
+        involved! 💡"
+          linkTitle="Ask a Question"
+          link="/ask-question"
+        />
       </div>
     </>
   )
