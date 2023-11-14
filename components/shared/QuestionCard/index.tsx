@@ -1,8 +1,9 @@
 import React from 'react'
 import Tag from '../Tag'
 import Image from 'next/image'
+import Link from 'next/link'
 
-const tags = ['javascript', 'html', 'css', 'reactjs']
+const tagsss = ['javascript', 'html', 'css', 'reactjs']
 
 export interface QuestionCardProps {
   _id: string
@@ -28,19 +29,24 @@ const QuestionCard = ({
   views,
   answers,
   createdAt,
-}) => {
+}: QuestionCardProps) => {
   return (
-    <div className="flex min-h-[209px] flex-col gap-7 rounded-[10px] border px-[45px] py-[36px] shadow-light-300">
-      <div>
-        <p className="hidden text-xs font-normal max-sm:flex">2 mins ago</p>
-        <h2 className="line-clamp-1 text-xl font-semibold leading-6">
-          The Lightning Component c:LWC_PizzaTracker generated invalid output
-          for field status. Error How to solve this
-        </h2>
+    <div className="card-wrapper p-9 sm:px-11">
+      <div className="flex flex-col-reverse items-start justify-between gap-5 sm:flex-row-reverse">
+        <div>
+          <span className="subtle-regular text-dark400_light700 line-clamp-1 flex sm:hidden">
+            {String(createdAt)}
+          </span>
+          <Link href={`/question/${_id}`}>
+            <h3 className="sm:h3-semibold base-semibold text-dark200_light900 line-clamp-1 flex-1">
+              {title}
+            </h3>
+          </Link>
+        </div>
       </div>
-      <div className="flex flex-wrap gap-2">
+      <div className="mt-3.5 flex flex-wrap gap-2">
         {tags.map((tag) => (
-          <Tag key={tag}>{tag}</Tag>
+          <Tag key={tag._id}>{tag.name}</Tag>
         ))}
       </div>
       <div className="flex flex-col justify-between gap-2 leading-5 max-sm:flex-row max-[530px]:flex-col md:flex-row">

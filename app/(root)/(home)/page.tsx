@@ -4,7 +4,7 @@ import NoResult from '@/components/shared/NoResult'
 import QuestionCard from '@/components/shared/QuestionCard'
 import LocalSearch from '@/components/shared/Search/LocalSearch'
 import { Button } from '@/components/ui/button'
-import { HomePageFilters } from '@/constants'
+import { HomePageFilters, dummyQuestionCardArray } from '@/constants'
 import Link from 'next/link'
 
 export default function Home() {
@@ -34,23 +34,30 @@ export default function Home() {
         <HomeFilter filters={HomePageFilters} />
       </div>
       <div className="mt-10 flex flex-col gap-6">
-        {/* <QuestionCard />
-        <QuestionCard />
-        <QuestionCard />
-        <QuestionCard />
-        <QuestionCard />
-        <QuestionCard />
-        <QuestionCard />
-        <QuestionCard />
-        <QuestionCard /> */}
-        <NoResult
-          title="There's no question to show"
-          description="Be the first to break the silence! 🚀 Ask a Question and kickstart the
+        {dummyQuestionCardArray.length > 0 ? (
+          dummyQuestionCardArray.map((question) => (
+            <QuestionCard
+              _id={question._id}
+              answers={question.answers}
+              author={question.author}
+              createdAt={question.createdAt}
+              tags={question.tags}
+              title={question.title}
+              upVotes={question.upVotes}
+              views={question.views}
+              key={question._id}
+            />
+          ))
+        ) : (
+          <NoResult
+            title="There's no question to show"
+            description="Be the first to break the silence! 🚀 Ask a Question and kickstart the
         discussion. our query could be the next big thing others learn from. Get
         involved! 💡"
-          linkTitle="Ask a Question"
-          link="/ask-question"
-        />
+            linkTitle="Ask a Question"
+            link="/ask-question"
+          />
+        )}
       </div>
     </>
   )

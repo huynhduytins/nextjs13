@@ -1,3 +1,4 @@
+import { QuestionCardProps } from '@/components/shared/QuestionCard'
 import { SidebarLink } from '@/types'
 
 export const themes = [
@@ -128,4 +129,64 @@ export const HomePageFilters = [
   { name: 'Recommended', value: 'recommended' },
   { name: 'Frequent', value: 'frequent' },
   { name: 'Unanswered', value: 'unanswered' },
+]
+
+export const dummyQuestionCardArray: QuestionCardProps[] = [
+  {
+    _id: '123',
+    title: 'How to use TypeScript with React?',
+    tags: [
+      { _id: 'tag1', name: 'React' },
+      { _id: 'tag2', name: 'TypeScript' },
+    ],
+    author: {
+      _id: 'author123',
+      name: 'Alice Johnson',
+      avatar: 'alice-avatar.jpg',
+    },
+    upVotes: 15,
+    views: 200,
+    answers: [
+      {
+        answerId: 'answer1',
+        content: 'You can use tsx files in React projects.',
+        author: 'Bob Smith',
+      },
+      {
+        answerId: 'answer2',
+        content: 'Install @types/react for TypeScript support.',
+        author: 'Charlie Brown',
+      },
+    ],
+    createdAt: new Date('2023-01-15'),
+  },
+  {
+    _id: '456',
+    title: 'Best practices for responsive web design?',
+    tags: [
+      { _id: 'tag3', name: 'Web Design' },
+      { _id: 'tag4', name: 'Responsive Design' },
+    ],
+    author: {
+      _id: 'author456',
+      name: 'Eve Williams',
+      avatar: 'eve-avatar.jpg',
+    },
+    upVotes: 20,
+    views: 250,
+    answers: [
+      {
+        answerId: 'answer3',
+        content: 'Use media queries for different screen sizes.',
+        author: 'David Miller',
+      },
+      {
+        answerId: 'answer4',
+        content: 'Flexbox and Grid are powerful tools for layout.',
+        author: 'Grace Turner',
+      },
+    ],
+    createdAt: new Date('2023-02-20'),
+  },
+  // Add more dummy data as needed
 ]
