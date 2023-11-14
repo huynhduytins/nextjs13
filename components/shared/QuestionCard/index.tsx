@@ -49,50 +49,7 @@ const QuestionCard = ({
           <Tag key={tag._id}>{tag.name}</Tag>
         ))}
       </div>
-      <div className="flex flex-col justify-between gap-2 leading-5 max-sm:flex-row max-[530px]:flex-col md:flex-row">
-        <div className="flex items-center gap-2">
-          <Image
-            src="/assets/images/site-logo.svg"
-            alt="author"
-            width={20}
-            height={20}
-            className="rounded-full"
-          />
-          <h3 className="text-sm font-semibold">Patheon</h3>
-          <p className="text-xs font-normal max-sm:hidden">
-            &#x2022; asked 2 mins ago
-          </p>
-        </div>
-        <div className="flex flex-wrap gap-3 text-xs font-medium">
-          <div className="flex items-center">
-            <Image
-              src="/assets/icons/like.svg"
-              alt="like"
-              width={20}
-              height={20}
-            />
-            <p>54 Votes</p>
-          </div>
-          <div className="flex items-center ">
-            <Image
-              src="/assets/icons/message.svg"
-              alt="message"
-              width={20}
-              height={20}
-            />
-            <p>30 Answers</p>
-          </div>
-          <div className="flex items-center ">
-            <Image
-              src="/assets/icons/eye.svg"
-              alt="eye"
-              width={20}
-              height={20}
-            />
-            <p>2.7K Views</p>
-          </div>
-        </div>
-      </div>
+      <div className="flex-between mt-6 w-full flex-wrap gap-3"></div>
     </div>
   )
 }
