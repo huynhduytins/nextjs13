@@ -4,15 +4,18 @@ import Question from '@/database/question.model'
 import { connectToDatabase } from '../mongoose'
 import Tag from '@/database/tag.model'
 
-export async function createQuestion(params) {
+export async function createQuestion(params: any) {
   try {
     await connectToDatabase()
+    // eslint-disable-next-line no-unused-vars
     const { title, content, tags, path, author } = params
     const question = new Question({
       title,
       content,
       author,
     })
+
+    question.save()
 
     const questionTags = []
 
