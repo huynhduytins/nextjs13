@@ -4,10 +4,13 @@ import NoResult from '@/components/shared/NoResult'
 import QuestionCard from '@/components/shared/QuestionCard'
 import LocalSearch from '@/components/shared/Search/LocalSearch'
 import { Button } from '@/components/ui/button'
-import { HomePageFilters, dummyQuestionCardArray } from '@/constants'
+import { HomePageFilters } from '@/constants'
+import { getQuestions } from '@/lib/actions/question.action'
 import Link from 'next/link'
 
-export default function Home() {
+export default async function Home() {
+  const questions = await getQuestions({})
+
   return (
     <>
       <div className="flex flex-col-reverse justify-between gap-4 sm:flex-row sm:items-center">
@@ -34,8 +37,8 @@ export default function Home() {
         <HomeFilter filters={HomePageFilters} />
       </div>
       <div className="mt-10 flex flex-col gap-6">
-        {dummyQuestionCardArray.length > 0 ? (
-          dummyQuestionCardArray.map((question) => (
+        {questions ? (
+          questions.map((question) => (
             <QuestionCard
               _id={question._id}
               answers={question.answers}

@@ -1,6 +1,5 @@
 import React from 'react'
 import Tag from '../Tag'
-import Image from 'next/image'
 import Link from 'next/link'
 import Metric from '../Metric'
 import { formatNumber, getTimestamp } from '@/lib/utils'
@@ -14,7 +13,7 @@ export interface QuestionCardProps {
     name: string
     avatar: string
   }
-  upVotes: number
+  upVotes: string[]
   views: number
   answers: Array<object>
   createdAt: Date
@@ -63,14 +62,14 @@ const QuestionCard = ({
           title="Votes"
           imgUrl="/assets/icons/like.svg"
           alt="UpVotes"
-          value={formatNumber(upVotes)}
+          value={formatNumber(upVotes?.length || 0)}
           textStyles="small-medium text-dark400_light800"
         />
         <Metric
           title="Answers"
           imgUrl="/assets/icons/message.svg"
           alt="message"
-          value={formatNumber(answers.length)}
+          value={formatNumber(answers?.length || 0)}
           textStyles="small-medium text-dark400_light800"
         />
         <Metric

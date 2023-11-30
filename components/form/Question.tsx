@@ -2,7 +2,7 @@
 
 import React, { useRef, useState } from 'react'
 import { Editor } from '@tinymce/tinymce-react'
-import { useRouter } from 'next/navigation'
+import { usePathname, useRouter } from 'next/navigation'
 
 import { zodResolver } from '@hookform/resolvers/zod'
 import { ControllerRenderProps, useForm } from 'react-hook-form'
@@ -31,6 +31,7 @@ interface Props {
 const Question = ({ author }: Props) => {
   const editorRef = useRef(null)
   const router = useRouter()
+  const pathname = usePathname()
   const [isSubmitting, setIsSubmitting] = useState(false)
 
   const handleInputKeyDown = (
@@ -113,6 +114,7 @@ const Question = ({ author }: Props) => {
         content: values.explanation,
         tags: values.tags,
         author: JSON.parse(author),
+        path: pathname,
       })
       router.push('/')
     } catch (error) {

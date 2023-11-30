@@ -3,11 +3,36 @@
 import Question from '@/database/question.model'
 import { connectToDatabase } from '../mongoose'
 import Tag from '@/database/tag.model'
+import { CreateQuestionParams, GetQuestionsParams } from './shared.types'
+import User from '@/database/user.model'
+import { revalidatePath } from 'next/cache'
 
-export async function createQuestion(params: any) {
+export async function getQuestions(params: GetQuestionsParams) {
   try {
     await connectToDatabase()
-    // eslint-disable-next-line no-unused-vars
+
+    // const { filter, page, pageSize, searchQuery } = params
+
+    const questions = await Question.find({})
+      .populate({
+        path: 'tags',
+        model: Tag,
+      })
+      .populate({
+        path: 'author',
+        model: User,
+      })
+      .sort({ createdAt: -1 })
+
+    return questions
+  } catch (error) {
+    console.log('Error connecting to MongoDB', error)
+  }
+}
+
+export async function createQuestion(params: CreateQuestionParams) {
+  try {
+    await connectToDatabase()
     const { title, content, tags, path, author } = params
     const question = new Question({
       title,
@@ -50,6 +75,8 @@ export async function createQuestion(params: any) {
         },
       },
     })
+
+    revalidatePath(path)
   } catch (error) {
     console.error('Error connecting to MongoDB', error)
   }
