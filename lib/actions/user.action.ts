@@ -6,7 +6,7 @@ import Question from '@/database/question.model'
 import User from '@/database/user.model'
 
 import { connectToDatabase } from '../mongoose'
-import { CreateUserParams, DeleteUserParams, UpdateUserParams } from './shared.types'
+import { CreateUserParams, DeleteUserParams, GetAllUsersParams, UpdateUserParams } from './shared.types'
 
 export const createUser = async (userData: CreateUserParams) => {
   try {
@@ -22,6 +22,21 @@ export const createUser = async (userData: CreateUserParams) => {
 
 export const getUserById = async (obj: {userId: string}) => {
   return {_id: '1'}
+}
+
+export const getAllUser = async (params: GetAllUsersParams) => {
+  try {
+    connectToDatabase()
+
+    // const {page = 1, pageSize = 20, filter, searchQuery} = params
+
+    const users = await User.find({}).sort({createdAt: -1})
+
+    return {users}
+  } catch (error) {
+    console.error(error)
+    throw error
+  }
 }
 
 export const updateUser = async (userData: UpdateUserParams) => {
