@@ -20,6 +20,10 @@ export const createUser = async (userData: CreateUserParams) => {
   }
 }
 
+export const getUserById = async (obj: {userId: string}) => {
+  return {_id: '1'}
+}
+
 export const updateUser = async (userData: UpdateUserParams) => {
   try {
     connectToDatabase()
