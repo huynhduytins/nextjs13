@@ -1,6 +1,6 @@
 'use client'
 
-import { useTheme } from '@/context/ThemeProvider'
+import Image from 'next/image'
 
 import {
   Menubar,
@@ -9,8 +9,8 @@ import {
   MenubarMenu,
   MenubarTrigger,
 } from '@/components/ui/menubar'
-import Image from 'next/image'
 import { themes } from '@/constants'
+import { useTheme } from '@/context/ThemeProvider'
 
 const Theme = () => {
   const { mode, setMode } = useTheme()

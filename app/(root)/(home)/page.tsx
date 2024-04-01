@@ -1,3 +1,5 @@
+import Link from 'next/link'
+
 import Filter from '@/components/shared/Filter'
 import HomeFilter from '@/components/shared/Filter/HomeFilter'
 import NoResult from '@/components/shared/NoResult'
@@ -6,7 +8,6 @@ import LocalSearch from '@/components/shared/search/LocalSearch'
 import { Button } from '@/components/ui/button'
 import { HomePageFilters } from '@/constants'
 import { getQuestions } from '@/lib/actions/question.action'
-import Link from 'next/link'
 
 export default async function Home() {
   const questions = await getQuestions({})

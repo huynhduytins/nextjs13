@@ -1,8 +1,10 @@
-import React from 'react'
-import Tag from '../Tag'
 import Link from 'next/link'
-import Metric from '../Metric'
+import React from 'react'
+
 import { formatNumber, getTimestamp } from '@/lib/utils'
+
+import Metric from '../Metric'
+import Tag from '../Tag'
 
 export interface QuestionCardProps {
   _id: string

@@ -1,11 +1,12 @@
 'use client'
 
-import { sidebarLinks } from '@/constants'
-import Link from 'next/link'
-import Image from 'next/image'
-import { usePathname } from 'next/navigation'
 import { useAuth } from '@clerk/nextjs'
+import Image from 'next/image'
+import Link from 'next/link'
+import { usePathname } from 'next/navigation'
+
 import { Button } from '@/components/ui/button'
+import { sidebarLinks } from '@/constants'
 
 const LeftSideBar = () => {
   const pathname = usePathname()
