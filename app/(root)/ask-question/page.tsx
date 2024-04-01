@@ -9,12 +9,12 @@ const Page = async () => {
   const user = await getUserById({ userId })
 
   return (
-    <div>
+    <>
       <h1 className="h1-bold text-dark100_light900">Ask a question</h1>
       <div>
         <Question author={JSON.stringify(user?._id)} />
       </div>
-    </div>
+    </>
   )
 }
 
