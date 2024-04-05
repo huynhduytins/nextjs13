@@ -36,7 +36,7 @@ const LocalSearch = ({
       <Input
         type="text"
         placeholder={placeholder}
-        value=""
+        value="" 
         onChange={() => {
           console.log('searching...')
         }}

@@ -1,13 +1,13 @@
-'use server'
+"use server"
 
-import { revalidatePath } from 'next/cache'
+import { revalidatePath } from "next/cache"
 
-import Question from '@/database/question.model'
-import Tag from '@/database/tag.model'
-import User from '@/database/user.model'
+import Question from "@/database/question.model"
+import Tag from "@/database/tag.model"
+import User from "@/database/user.model"
 
-import { connectToDatabase } from '../mongoose'
-import { CreateQuestionParams, GetQuestionsParams } from './shared.types'
+import { connectToDatabase } from "../mongoose"
+import { CreateQuestionParams, GetQuestionsParams } from "./shared.types"
 
 export async function getQuestions(params: GetQuestionsParams) {
   try {
@@ -17,18 +17,18 @@ export async function getQuestions(params: GetQuestionsParams) {
 
     const questions = await Question.find({})
       .populate({
-        path: 'tags',
+        path: "tags",
         model: Tag,
       })
       .populate({
-        path: 'author',
+        path: "author",
         model: User,
       })
       .sort({ createdAt: -1 })
 
     return questions
   } catch (error) {
-    console.log('Error connecting to MongoDB', error)
+    console.log("Error connecting to MongoDB", error)
   }
 }
 
@@ -50,7 +50,7 @@ export async function createQuestion(params: CreateQuestionParams) {
       const existingTag = await Tag.findOneAndUpdate(
         {
           name: {
-            $regex: new RegExp(`^${tag}$`, 'i'),
+            $regex: new RegExp(`^${tag}$`, "i"),
           },
         },
         {
@@ -80,6 +80,6 @@ export async function createQuestion(params: CreateQuestionParams) {
 
     revalidatePath(path)
   } catch (error) {
-    console.error('Error connecting to MongoDB', error)
+    console.error("Error connecting to MongoDB", error)
   }
 }

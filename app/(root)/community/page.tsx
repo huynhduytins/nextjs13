@@ -5,9 +5,11 @@ import HomeFilter from "@/components/shared/Filter/HomeFilter";
 import { UserFilters } from "@/constants/filter";
 import { getAllUser } from "@/lib/actions/user.action";
 import Link from "next/link";
+import UserCard from "@/components/card/UserCard";
 
 const Page = async () => {
   const result = await getAllUser({});
+  console.log(result)
 
   return (
     <>
@@ -29,7 +31,7 @@ const Page = async () => {
       </div>
       <section className="mt-12 flex flex-wrap gap-4">
         {result?.users.length > 0 ? (
-          result?.users.map((user) => <div key={user.name}>{user.name}</div>)
+          result?.users.map((user) => <UserCard user={user} key={user._id}/>)
         ) : (
           <div className="paragraph-regular text-dark200_light800 mx-auto max-w-4xl text-center">
             <p>No Users yet</p>
