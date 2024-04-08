@@ -7,7 +7,11 @@ import Tag from "@/database/tag.model"
 import User from "@/database/user.model"
 
 import { connectToDatabase } from "../mongoose"
-import { CreateQuestionParams, GetQuestionsParams } from "./shared.types"
+import {
+  CreateQuestionParams,
+  GetQuestionByIdParams,
+  GetQuestionsParams,
+} from "./shared.types"
 
 export async function getQuestions(params: GetQuestionsParams) {
   try {
@@ -81,5 +85,26 @@ export async function createQuestion(params: CreateQuestionParams) {
     revalidatePath(path)
   } catch (error) {
     console.error("Error connecting to MongoDB", error)
+  }
+}
+
+export async function getQuestonById(params: GetQuestionByIdParams) {
+  try {
+    await connectToDatabase()
+
+    const { questionId } = params
+
+    const question = await Question.findById(questionId)
+      .populate({ path: "tags", model: Tag, select: "_id name" })
+      .populate({
+        path: "author",
+        model: User,
+        select: "_id clerkId name picture",
+      })
+
+    return question
+  } catch (error) {
+    console.log(error)
+    throw error
   }
 }

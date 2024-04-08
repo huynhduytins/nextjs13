@@ -9,7 +9,6 @@ import React from "react"
 
 const Page = async () => {
   const result = await getAllTags({})
-  console.log(result)
   return (
     <>
       <h1 className="h1-bold text-dark100_light900">All Users</h1>
@@ -30,7 +29,7 @@ const Page = async () => {
       </div>
       <section className="mt-12 flex flex-wrap gap-4">
         {result.tags.length > 0 ? (
-          result.tags.map((tap) => <TagCard />)
+          result.tags.map((tag) => <TagCard tag={tag}/>)
         ) : (
           <NoResult
             title="No Tags Found"
