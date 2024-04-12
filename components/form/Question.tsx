@@ -140,7 +140,7 @@ const Question = ({ author }: Props) => {
               </FormLabel>
               <FormControl className="mt-3.5">
                 <Input
-                  className="no-focus paragraph-regular light-border-2 text-dark300_light700 min-h-[56px] border"
+                  className="no-focus paragraph-regular light-border-2 text-dark300_light700 min-h-[56px] border background-light850_dark100"
                   {...field}
                 />
               </FormControl>
@@ -224,7 +224,7 @@ const Question = ({ author }: Props) => {
               <FormControl className="mt-3.5">
                 <>
                   <Input
-                    className="no-focus paragraph-regular light-border-2 text-dark300_light700 min-h-[56px] border"
+                    className="no-focus paragraph-regular light-border-2 text-dark300_light700 min-h-[56px] border background-light850_dark100"
                     placeholder="Add tags..."
                     onKeyDown={(e) => handleInputKeyDown(e, field)}
                   />
