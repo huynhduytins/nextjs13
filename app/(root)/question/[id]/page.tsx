@@ -1,11 +1,13 @@
+import Metric from "@/components/shared/Metric"
 import { getQuestonById } from "@/lib/actions/question.action"
+import { formatNumber, getTimestamp } from "@/lib/utils"
 import Image from "next/image"
 import Link from "next/link"
 import React from "react"
 
-const Page = async ({ params, searchParams } : any) => {
+const Page = async ({ params, searchParams }: any) => {
   const result = await getQuestonById({ questionId: params.id })
-  
+
   return (
     <>
       <div className="flex-start w-full flex-col">
@@ -34,7 +36,9 @@ const Page = async ({ params, searchParams } : any) => {
                 height={19}
                 className="cursor-pointer"
               />
-              <p className="px-2 py-1 small-medium bg-light-700 rounded-md">12</p>
+              <p className="px-2 py-1 small-medium bg-light-700 rounded-md leading-normal">
+                {formatNumber(result.upvotes.length || 0)}
+              </p>
             </div>
             <div className="flex gap-[6px] items-center">
               <Image
@@ -44,7 +48,11 @@ const Page = async ({ params, searchParams } : any) => {
                 height={19}
                 className="cursor-pointer"
               />
-              <p className="px-2 py-1 small-medium bg-light-700 rounded-md">-4</p>
+              <p className="px-2 py-1 small-medium bg-light-700 rounded-md leading-normal">
+                {result.downvotes.length
+                  ? `-${formatNumber(result.downvotes.length)}`
+                  : 0}
+              </p>
             </div>
             <Image
               src="/assets/icons/star-red.svg"
@@ -54,6 +62,52 @@ const Page = async ({ params, searchParams } : any) => {
               className="cursor-pointer"
             />
           </div>
+        </div>
+        <div className="w-full mt-4">
+          <h2 className="h2-semibold">{result.title}</h2>
+        </div>
+        <div className="w-full mt-5 flex justify-start gap-4">
+          <Metric
+            title={`Asked ${getTimestamp(result.createdAt)}`}
+            imgUrl="/assets/icons/clock-2.svg"
+            alt="time"
+            value={""}
+            textStyles="small-medium text-dark400_light800"
+          />
+          <Metric
+            title="Votes"
+            imgUrl="/assets/icons/like.svg"
+            alt="UpVotes"
+            value={formatNumber(result.upvotes?.length || 0)}
+            textStyles="small-medium text-dark400_light800"
+          />
+          <Metric
+            title="Answers"
+            imgUrl="/assets/icons/message.svg"
+            alt="message"
+            value={formatNumber(result.answer?.length || 0)}
+            textStyles="small-medium text-dark400_light800"
+          />
+          <Metric
+            title="Views"
+            imgUrl="/assets/icons/eye.svg"
+            alt="eye"
+            value={formatNumber(result.views)}
+            textStyles="small-medium text-dark400_light800"
+          />
+        </div>
+        <div>
+          <p>
+            When the user clicks a button for the first time, a spinner is
+            displayed, the "close" button is disabled, and a modal popup is
+            shown. When the user clicks on a table displayed within the modal
+            popup, the table loads data. When the user closes the popup by
+            clicking the "close" button, and then clicks the same button again
+            without refreshing the page, the data in the table should be the
+            same as it was before. I need it so that when the user clicks the
+            button, any changes made stay in place even after closing and
+            reopening the popup.
+          </p>
         </div>
       </div>
     </>
