@@ -4,12 +4,5 @@
     "standard",
     "plugin:tailwindcss/recommended",
     "prettier"
-  ],
-  "plugins": ["react", "simple-import-sort"], 
-  "rules": {
-    // increase the severity of rules so they are auto-fixable
-    "simple-import-sort/imports": "error",
-    "simple-import-sort/exports": "error",
-    "camelcase": ["error", {"properties": "never"}]
-  }
+  ]
 }
