@@ -96,8 +96,8 @@ const Page = async ({ params, searchParams }: any) => {
             textStyles="small-medium text-dark400_light800"
           />
         </div>
-        <div>
-          <p>
+        <div className="">
+          <p className="body-regular">
             When the user clicks a button for the first time, a spinner is
             displayed, the "close" button is disabled, and a modal popup is
             shown. When the user clicks on a table displayed within the modal
